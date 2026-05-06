@@ -1,0 +1,16 @@
+services:
+  f1-backend:
+    build: ../f1-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+
+  redis:
+      image: redis
+      volumes:
+          - redis-data:/data
+volumes:
+    redis-data:
